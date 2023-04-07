@@ -1,29 +1,27 @@
-import supertest from 'supertest'
-import app from '../../../petStore/petStore/tests/app.js/index.js'
-
+const request = require('supertest');
+const app = 'https://petstore.swagger.io/v2';
 
 describe("POST /user", () => {
 
-    describe("given a username and password", () => {
+    //given a username and password"
         it("should respond with a 200 status code", async() => {
             const response = await 
             request(app)
             .post("/user")
             .send(
                 {
-                    id: 0,
-                    username: "majatest",
-                    firstName: "Maja",
-                    lastName: "Test",
-                    email: "mmm@mm.mm",
-                    password: "majatest",
-                    puserStatus: 0
+                    "id": 0,
+                    "username": "majatest",
+                    "firstName": "Maja",
+                    "lastName": "Test",
+                    "email": "mmm@mm.mm",
+                    "password": "majatest",
+                    "puserStatus": 0
                   }
             )
             expect(response.statusCode).toBe(200)
         })
 
-    })
 })
 
 

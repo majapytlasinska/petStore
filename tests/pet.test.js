@@ -1,12 +1,5 @@
 const request = require('supertest');
-const assert = require('assert');
-const express = require('express');
-
-const app = express();
-
-app.get('/pet', function(req, res) {
-  //res.status(200).json({ name: 'john' });
-});
+const app = 'https://petstore.swagger.io/v2';
 
 describe('POST, GET, PUT and DELETE /pet', function() {
 
@@ -22,7 +15,7 @@ it('adding a new pet with wrong data gets 405', () => {
       }
     )
     .set('Accept', 'application/json')
-    .expect(405, done)
+    .expect(405)
 })
 
 it('finding nonexisting pet gives 404', () => {
@@ -37,7 +30,7 @@ it('finding nonexisting pet gives 404', () => {
     }
   )
   .set('Accept', 'application/json')
-  .expect(404, done)
+  .expect(404 )
 })
 
 it('updating a pet with wrong ID gives 400', () => {
@@ -53,13 +46,13 @@ it('updating a pet with wrong ID gives 400', () => {
     }
   )
   .set('Accept', 'application/json')
-  .expect(400, done)
+  .expect(400 )
 })
 
 it('deleting nonexisting pet gives 404', () => {
   request(app, { http2: true })
   .delete('/pet/dhsjaskdjhfghdssk')
-  .expect(404, done)
+  .expect(404 )
 })
 
 });
